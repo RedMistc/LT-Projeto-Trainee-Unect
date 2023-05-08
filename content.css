@@ -1,0 +1,299 @@
+.frase-do-dia{
+    height: 11.9rem;
+    width: 62rem;
+    background-color: #FFFFFF;
+    box-shadow: 0.2rem 0.2rem 1rem rgba(0, 0, 0, 0.237);
+    border-radius: 2rem;
+    display: flex;
+    flex-direction: row;
+    overflow: visible;
+    
+    
+}
+
+.out-circle{
+    width: 4.4rem;
+    height: 4.4rem;
+    background-color: #FFFCEE;
+    border-radius: 50%;
+    margin-top: 1.6rem;
+    margin-left: 1.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.in-circle{
+    width: 3.4rem;
+    height: 3.4rem;
+    border-radius: 50%;
+    background-color: #FFF5C0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.in-circle img{
+    margin-left: 0.21rem;
+}
+
+.frase-do-dia-texto{
+    margin-left: 0.5rem;
+    margin-top: 1.6rem;
+}
+
+.frase-do-dia-texto h4{
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.6rem;
+}
+
+.frase-do-dia-texto p{
+    font-size: 1.4rem;
+    margin-right: 2rem;
+
+}
+
+.main-content-container{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3.2rem;
+    
+}
+
+.content-container{
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    margin-left: 22.5rem; 
+    margin-right: 22.5rem;
+    margin-bottom: 3.2rem;
+    margin-top: 3.2rem;
+    height: auto;
+    
+}
+
+.section-title{
+    display: flex;
+    justify-content: space-between;
+}
+
+.section h2{
+    font-size: 2rem;
+    font-weight: 400;
+    color: #141414
+}
+
+.add-button, .close-button{
+    width: 30px;
+    height: 30px;
+    border: #226ED8 0.2rem solid;
+    border-radius: 50%;
+    color: #226ED8;
+    font-size: 1.6rem;
+    background-color: transparent;
+}
+
+.add-button:hover, .close-button:hover{
+    background-color: #226ED8;
+    color: #fafafa;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.card{
+    width: 29.3rem;
+    height: 33.7rem;
+    background-color: #EEEEEE;
+    border-radius: 1rem;
+    overflow-y: auto;
+    
+   
+}
+
+/* TASKS */
+
+.task-container{
+    width: auto;
+    margin: 2rem;
+    background-color: #FFFFFF;
+    height: auto;
+    border-radius: 1rem;
+    display: flex;
+    position: relative;
+}
+
+.task-content{
+    margin: 1.2rem;
+    
+}
+
+.task-title{
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.description{
+    height: fit-content;
+}
+
+.description-show{
+    font-size: 1.2rem;
+    font-weight: 300;
+    display: flex;
+    gap: 0.6rem
+}
+
+.description-show:hover{
+    cursor: pointer;
+    
+}
+
+.description-body{
+    font-size: 1.2rem;
+    color: #141414;
+    max-width: 16.5rem;
+    word-wrap: break-word;
+    height: auto;
+    display: none;
+}
+
+.move-btns{
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    right: 1.2rem;
+    bottom: 1.2rem;
+    flex-direction: row-reverse;
+    gap: 0.4rem;
+}
+
+
+.move-right, .return{
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background-color: #226ED8;
+    color: #FFFFFF;
+    border: none;
+    font-size: 1.2rem;
+}
+
+.move-right:hover, .return:hover{
+    cursor: pointer;
+    background-color: #ffffffc6;
+    color: #226ED8c6;
+    border: solid 0.2rem #226ED8c6;
+}
+
+.move-left:hover{
+    cursor: pointer;
+    background-color: #226ED8c6;
+    color: #FFFFFFc6;
+    border: none;
+}
+
+.move-left{
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background-color: #FFFFFF;
+    color: #226ED8;
+    border: solid 0.2rem #226ED8;
+    font-size: 1.2rem;
+}
+
+.add-task-container{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: 1s;
+}
+
+#add-task-screen{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 44.7rem;
+    height: 42.1rem;
+    border-radius: 2rem;
+    background-color: #FFFFFF;
+    padding: 3rem 5rem 3rem 5rem;
+    
+
+}
+
+.new-task{
+    width: 100%;
+    text-align: center;
+    color: #226ED8;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.close-button{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 3rem;
+    margin-right: 3rem;
+}
+
+.add-task-content{
+    width: auto;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    margin-top: 5rem;
+
+}
+
+.add-task-title-container{
+    margin-bottom: 3rem;
+}
+
+
+.add-task-text{
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.title-input, .description-input{
+    background-color: #EEEEEE;
+    border-radius: 1rem;
+    border: none;
+    resize: none;
+    padding: 0.4rem;
+    font-size: 1.4rem;
+}
+
+.title-input{
+    width: 100%;
+    height: 4.5rem;
+}
+
+.description-input{
+    width: 100%;
+    height: 12rem;
+}
+
+.create-task-btn{
+    width: 100%;
+    height: 4.1rem;
+    border: none;
+    border-radius: 2rem;
+    background-color: #4890F5;
+    font-size: 1.2rem;
+    color: #FFFFFF;
+    margin-top: 5.5rem;
+}

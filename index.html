@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <link rel="stylesheet" href="general.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="content.css">
+    <link rel="stylesheet" href="icons.css">
+    <title>Utasks</title>
+</head>
+<body>
+    <div class="full-page">
+        <header>
+            <img class="logo-header" src="./imagens/[Imagem] Logo branca.svg">
+            <h1>uTask 3.0</h1>
+            <div class="mode-switch">
+                <img class="lightmode-icon" src="icones/light_mode.png" alt="icone modo claro">
+                <div class="lightmode-background"></div>
+            </div>
+        </header>
+
+        <div class="content-container">
+            <div class="frase-do-dia">
+                <div class="bulb-icon">
+                    <div class="out-circle">
+                        <div class="in-circle">
+                            <img src="./icones/tips_and_updates.png" alt="" id="bulb-icon">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="frase-do-dia-texto">
+                    <h4>Frase do dia</h4>
+                    <p>Se você quer um pedacinho do paraíso, acredite em Deus. Mas se você quer conquistar o mundo, acredite em você porque Deus já te deu tudo o que você precisa para você vencer.</p>
+                </div>
+            </div>
+            <div class="main-content-container">
+                <div class="section">
+                    <div class="section-title">
+                        <h2>A fazer</h2>
+                        <button class="add-button">+</button>
+                    </div>
+                    <div class="card" id="to-do">
+                        <div class="task-container">
+                            <div class="task-content">
+                                <h4 class="task-title">
+                                    Pagar conta de luz
+                                </h4>
+                                
+                                <i class="material-icons" id="more-vert">more_vert</i>
+
+                                <div class="move-btns">
+                                    <button class="move-right">></button>
+                                    <button class="move-left"><</button>
+                                </div>
+
+                                <div class="description">
+                                    <p class="description-show" data-status="inactive">
+                                        Ler descrição <i class="material-icons" id="expand-more">expand_more</i>
+                                    </p>
+
+                                    <p class="description-body">
+                                        Comprar batata, cenoura, feijão, alho, arroz e pipoca.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="section">
+                    <h2>Em andamento</h2>
+                    <div class="card" id="doing"></div>
+
+                </div>
+                <div class="section">
+                    <h2>Feito</h2>
+                    <div class="card" id="done"></div>
+
+                </div>
+                
+            </div>
+
+        </div>
+
+        <footer>
+            <p class="description">© Processo de Trainee <span>Unect Jr.</span> 2023.1</p>
+            <div class="assinatura-container">
+                <p class="feito-com">Feito com </p>
+                <img src="./icones/favorite.png" alt="" class="heart-icon">
+                <p class="assinatura"> por Lucas Teixeira</p>
+            </div>
+        </footer>
+    </div>
+    <div class="add-task-container">
+        <div id="add-task-screen">
+            <h2 class="new-task">
+                Nova Task
+            </h2>
+            <button class="close-button"><i class="material-icons" id="close">close</i></button>
+            
+            <div class="add-task-content">
+                <div class="add-task-title-container">
+                    <p class="add-task-text">Titulo*</p>
+                    <textarea wrap="hard" class="title-input"></textarea>
+                </div>
+                <div class="add-task-desciption-container">
+                    <p class="add-task-text">Descrição</p>
+                    <textarea wrap="hard" class="description-input"></textarea>
+                </div>
+            </div>
+
+            <button class="create-task-btn">Criar Task</button>
+        </div>
+    </div>
+    
+    <script src="index.js"></script>
+</body>
+
+</html>
