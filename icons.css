@@ -1,0 +1,29 @@
+#expand-more, #expand-less{
+    font-size: 1.2rem;
+    vertical-align: middle;
+    padding-top: 0.3rem;
+}
+
+#more-vert{
+    position: absolute;
+    top:1.4rem;
+    right:1rem;
+    font-size: 1.8rem;
+    /* margin: 2rem; */
+}
+
+#more-vert:hover{
+    cursor: pointer;
+}
+
+#close{
+    padding-right: 0.1rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.return i{
+    padding-top: 0.3rem;
+    font-size: 1.2rem;
+    font-weight: 400;
+}

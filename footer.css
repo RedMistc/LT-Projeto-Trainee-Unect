@@ -1,0 +1,28 @@
+footer{
+    min-width: 100%;
+    min-height: 5rem;
+    background-color: #114FA7;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+    bottom: 0px;
+    font-size: 1.4rem;
+    color: #FFFFFF;
+}
+
+.assinatura-container{
+    display: flex;
+}
+
+.assinatura, footer span{
+    font-weight: bold;
+}
+
+
+.heart-icon{
+    flex-basis: auto;
+    align-self: center;
+    margin-left: 0.4rem;
+    margin-right: 0.4rem;
+}
