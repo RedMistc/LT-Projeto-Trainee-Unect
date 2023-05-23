@@ -1,7 +1,7 @@
 .frase-do-dia{
     height: 11.9rem;
     width: 62rem;
-    background-color: #FFFFFF;
+    background-color: var(--frase-do-dia);
     box-shadow: 0.2rem 0.2rem 1rem rgba(0, 0, 0, 0.237);
     border-radius: 2rem;
     display: flex;
@@ -11,10 +11,14 @@
     
 }
 
+.frase-do-dia-btn{
+    display: none;
+}
+
 .out-circle{
     width: 4.4rem;
     height: 4.4rem;
-    background-color: #FFFCEE;
+    background-color: var(--first-circle);
     border-radius: 50%;
     margin-top: 1.6rem;
     margin-left: 1.6rem;
@@ -27,7 +31,7 @@
     width: 3.4rem;
     height: 3.4rem;
     border-radius: 50%;
-    background-color: #FFF5C0;
+    background-color: var(--second-circle);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -56,6 +60,7 @@
 }
 
 .main-content-container{
+    flex: 1;
     display: flex;
     justify-content: space-between;
     margin-top: 3.2rem;
@@ -63,7 +68,6 @@
 }
 
 .content-container{
-    flex: 1;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -71,33 +75,47 @@
     margin-right: 22.5rem;
     margin-bottom: 3.2rem;
     margin-top: 3.2rem;
-    height: auto;
     
+}
+
+.section-display{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+body::-webkit-scrollbar{
+    width: 0.1rem;
+}
+
+
+.swipe-left, .swipe-right{
+    display: none;
 }
 
 .section-title{
     display: flex;
     justify-content: space-between;
+    margin-bottom: 0.8rem;
 }
 
 .section h2{
     font-size: 2rem;
     font-weight: 400;
-    color: #141414
 }
 
-.add-button, .close-button{
+.add-button, .close-button, .close-button-frase{
     width: 30px;
     height: 30px;
-    border: #226ED8 0.2rem solid;
+    border: var(--unect-blue) 0.2rem solid;
     border-radius: 50%;
-    color: #226ED8;
+    color: var(--unect-blue);
     font-size: 1.6rem;
     background-color: transparent;
 }
 
-.add-button:hover, .close-button:hover{
-    background-color: #226ED8;
+.add-button:hover, .close-button:hover, .close-button-frase:hover{
+    background-color: var(--unect-blue);
     color: #fafafa;
     transition: 0.2s;
     cursor: pointer;
@@ -106,11 +124,37 @@
 .card{
     width: 29.3rem;
     height: 33.7rem;
-    background-color: #EEEEEE;
+    background-color: var(--section-background);
     border-radius: 1rem;
     overflow-y: auto;
-    
+    scrollbar-color: #C4C4C4 transparent;
+    scrollbar-width: thin;
+}
+
+.card::-webkit-scrollbar{
+    width: 0.6rem;
+    margin-right: 6px;
    
+}
+.card::-webkit-scrollbar-thumb {
+    background: #C4C4C4;
+    border-radius: 0.3rem;
+    margin-right:0.6rem;
+    border-right: 6px transparent solid;
+    margin-right: 6px;
+}
+.card::-webkit-scrollbar-track {
+   margin-right: 6px;
+   border-right: solid 6px transparent;
+}
+.card::-webkit-scrollbar-track-piece:end {
+    background: transparent;
+    margin-bottom: 20px; 
+}
+
+.card::-webkit-scrollbar-track-piece:start {
+    background: transparent;
+    margin-top: 20px;
 }
 
 /* TASKS */
@@ -118,7 +162,7 @@
 .task-container{
     width: auto;
     margin: 2rem;
-    background-color: #FFFFFF;
+    background-color: var(--boxes);
     height: auto;
     border-radius: 1rem;
     display: flex;
@@ -127,7 +171,30 @@
 
 .task-content{
     margin: 1.2rem;
-    
+    transition: ease-in;
+}
+
+.delete-btn{
+    width: 7.1rem;
+    height: 3.1rem;
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 4px 1px  rgba(0, 0, 0, 0.423);
+    border-radius: 0.4rem;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--red-delete);
+    border: none;
+    display: none;
+}
+
+.delete-btn:hover{
+    cursor: pointer;
+}
+
+.indicator{
+    display: none;
 }
 
 .task-title{
@@ -135,6 +202,11 @@
     font-weight: 600;
     margin-bottom: 1rem;
 }
+
+.task-tile[data-stats="done"]{
+    text-decoration-style: dashed;
+    transition: 0.4s;
+} 
 
 .description{
     height: fit-content;
@@ -149,12 +221,10 @@
 
 .description-show:hover{
     cursor: pointer;
-    
 }
 
 .description-body{
     font-size: 1.2rem;
-    color: #141414;
     max-width: 16.5rem;
     word-wrap: break-word;
     height: auto;
@@ -176,22 +246,24 @@
     width: 2rem;
     height: 2rem;
     border-radius: 50%;
-    background-color: #226ED8;
-    color: #FFFFFF;
+    background-color: var(--unect-blue);
+    color: white;
     border: none;
     font-size: 1.2rem;
 }
 
 .move-right:hover, .return:hover{
     cursor: pointer;
-    background-color: #ffffffc6;
-    color: #226ED8c6;
-    border: solid 0.2rem #226ED8c6;
+    background-color: transparent;
+    color: var(--unect-blue);
+    border: solid 0.2rem var(--unect-blue);
+    opacity: 60%;
 }
 
 .move-left:hover{
     cursor: pointer;
-    background-color: #226ED8c6;
+    background-color: var(--unect-blue);
+    opacity: 60%;
     color: #FFFFFFc6;
     border: none;
 }
@@ -200,9 +272,9 @@
     width: 2rem;
     height: 2rem;
     border-radius: 50%;
-    background-color: #FFFFFF;
-    color: #226ED8;
-    border: solid 0.2rem #226ED8;
+    background-color: transparent;
+    color: var(--unect-blue);
+    border: solid 0.2rem var(--unect-blue);
     font-size: 1.2rem;
 }
 
@@ -227,16 +299,14 @@
     width: 44.7rem;
     height: 42.1rem;
     border-radius: 2rem;
-    background-color: #FFFFFF;
+    background-color: var(--add-task-background);
     padding: 3rem 5rem 3rem 5rem;
-    
-
 }
 
 .new-task{
     width: 100%;
     text-align: center;
-    color: #226ED8;
+    color: var(--unect-blue);
     font-size: 2rem;
     font-weight: 600;
 }
@@ -247,6 +317,9 @@
     right: 0;
     margin-top: 3rem;
     margin-right: 3rem;
+}
+.close-button-frase{
+    display: none;
 }
 
 .add-task-content{
@@ -269,7 +342,7 @@
 }
 
 .title-input, .description-input{
-    background-color: #EEEEEE;
+    background-color: var(--section-background);
     border-radius: 1rem;
     border: none;
     resize: none;

@@ -4,7 +4,7 @@
     padding-top: 0.3rem;
 }
 
-#more-vert{
+.more-vert{
     position: absolute;
     top:1.4rem;
     right:1rem;
@@ -12,7 +12,20 @@
     /* margin: 2rem; */
 }
 
-#more-vert:hover{
+.delete-container{
+    position: absolute;
+    right:1rem;
+    bottom:0.8rem;
+    z-index:2;
+}
+
+#delete-outline{
+    font-size: 1.6rem;
+    color: #DF0000;
+    padding-right: 0.4rem;
+}
+
+.more-vert:hover{
     cursor: pointer;
 }
 
@@ -26,4 +39,26 @@
     padding-top: 0.3rem;
     font-size: 1.2rem;
     font-weight: 400;
+}
+
+.light-mode{
+    position: absolute;
+    font-size: 1.6rem;
+    top: 0.4rem;
+    left: 0.4rem;
+    color: var(--switch-icons);
+    transition: 0.4s;
+}
+
+.dark-mode-icon{
+    position: absolute;
+    font-size: 1.6rem;
+    bottom: 0.4rem;
+    right: 0.4rem;
+    color: var(--switch-icons);
+    transition: 0.4s;
+}
+
+#tips-and-updates{
+    color: var(--yellow-icons);
 }
