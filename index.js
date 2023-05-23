@@ -2,11 +2,17 @@ const addBtn = document.querySelector(".add-button")
 
 const closeBtn = document.querySelector(".close-button")
 
+const closeBtnFrase = document.querySelector(".close-button-frase")
+
+const fraseDoDiaBtn = document.querySelector(".frase-do-dia-btn")
+
 const createTask = document.querySelector(".create-task-btn")
 
 const toDoList = document.getElementById("to-do")
 const doingList = document.getElementById("doing")
 const doneList = document.getElementById("done")
+
+
 
 //const expandDescription = document.querySelector(".description-show")
 
@@ -19,6 +25,14 @@ addBtn.onclick = function(){
 
 closeBtn.onclick = function(){
     document.querySelector(".add-task-container").style.display = "none"
+}
+
+fraseDoDiaBtn.onclick = function(){
+    document.querySelector(".frase-do-dia-background").style.display = "block"
+}
+
+closeBtnFrase.onclick = function(){
+    document.querySelector(".frase-do-dia-background").style.display = "none"
 }
 
 let tasks = [];
@@ -37,12 +51,19 @@ createTask.onclick = function(){
     task.descricao = document.querySelector(".description-input").value
 
     taskStructure = `
-        <div class="task-content" stats="to-do">
+        <div class="task-content" data-stats="to-do">
             <h4 class="task-title">
                 ${task.titulo}
             </h4>
 
-            <i class="material-icons" id="more-vert">more_vert</i>
+            
+            <i class="material-icons more-vert" data-status="inactive" data-index="${i}">more_vert</i>
+                <div class="delete-container"> 
+                    <button class="delete-btn" data-index="${i}">
+                            <i class="material-icons" id="delete-outline">delete_outline</i>
+                            Excluir
+                    </button>
+                </div>
 
             <div class="move-btns">
                 <button class="move-right" data-index="${i}">></button>
@@ -59,6 +80,7 @@ createTask.onclick = function(){
             </div>
         </div>
     `
+    
 
     taskDOM = document.createElement("div")
     taskDOM.classList.add("task-container")
@@ -90,9 +112,9 @@ toDoList.addEventListener('click', (event) => {
 
         tasks[index].querySelector(".move-btns").append(moveLeft)
       
+        tasks[index].dataset.stats = "doing"
         doingList.appendChild(tasks[index])
       
-        tasks[index].dataset.stats = "doing"
       
     }
     if (event.target.classList.contains('description-show')){
@@ -111,11 +133,37 @@ toDoList.addEventListener('click', (event) => {
         } else if(expandDescription.dataset.status === "active"){
 
             expandDescription.dataset.status = "inactive"
-            expandDescription.style.color = "#141414"
+            expandDescription.style.color = "var(--text-color)"
             expandDescription.innerHTML = `Ler descrição <i class="material-icons" id="expand-more">expand_more</i>`
     
             tasks[index].querySelector(".description-body").style.display = "none"
         }
+    }
+
+    if(event.target.classList.contains('more-vert')){
+        console.log("bom dia")
+        const index = event.target.dataset.index
+        if(event.target.dataset.status === "inactive"){
+            const deleteBtn = tasks[index].querySelector(".delete-btn")
+            event.target.style.color = "#226ED8"
+            deleteBtn.style.display = "flex"
+            event.target.dataset.status = "active"
+        } else if (event.target.dataset.status === "active"){
+            const deleteBtn = tasks[index].querySelector(".delete-btn")
+            deleteBtn.style.display = "none"
+            event.target.style.color = "black"
+            event.target.dataset.status = "inactive"
+        }
+    }
+
+    if(event.target.classList.contains("delete-btn")){
+        const index = event.target.dataset.index
+        toDoList.removeChild(tasks[index])
+        delete tasks[index]
+    } else if(event.target.parentElement.classList.contains("delete-btn")){
+        const index = event.target.parentElement.dataset.index
+        toDoList.removeChild(tasks[index])
+        delete tasks[index]
     }
   });
 
@@ -133,10 +181,11 @@ toDoList.addEventListener('click', (event) => {
         button.textContent = ""
         button.appendChild(icon)
         button.querySelector("i").textContent = "replay"
-      
-        doneList.appendChild(tasks[index]);
+        tasks[index].querySelector("h4").style.textDecoration = "line-through"
       
         tasks[index].dataset.stats = "done";
+        doneList.appendChild(tasks[index]);
+      
       
     }
 
@@ -146,9 +195,9 @@ toDoList.addEventListener('click', (event) => {
 
         tasks[index].querySelector(".move-left").remove()
       
+        tasks[index].dataset.stats = "to-do";
         toDoList.appendChild(tasks[index]);
       
-        tasks[index].dataset.stats = "to-do";
       
     }
 
@@ -168,11 +217,37 @@ toDoList.addEventListener('click', (event) => {
         } else if(expandDescription.dataset.status === "active"){
 
             expandDescription.dataset.status = "inactive"
-            expandDescription.style.color = "#141414"
+            expandDescription.style.color = "var(--text-color)"
             expandDescription.innerHTML = `Ler descrição <i class="material-icons" id="expand-more">expand_more</i>`
     
             tasks[index].querySelector(".description-body").style.display = "none"
         }
+    }
+
+    if(event.target.classList.contains('more-vert')){
+        console.log("bom dia")
+        const index = event.target.dataset.index
+        if(event.target.dataset.status === "inactive"){
+            const deleteBtn = tasks[index].querySelector(".delete-btn")
+            event.target.style.color = "#226ED8"
+            deleteBtn.style.display = "flex"
+            event.target.dataset.status = "active"
+        } else if (event.target.dataset.status === "active"){
+            const deleteBtn = tasks[index].querySelector(".delete-btn")
+            deleteBtn.style.display = "none"
+            event.target.style.color = "black"
+            event.target.dataset.status = "inactive"
+        }
+    }
+
+    if(event.target.classList.contains("delete-btn")){
+        const index = event.target.dataset.index
+        doingList.removeChild(tasks[index])
+        delete tasks[index]
+    } else if(event.target.parentElement.classList.contains("delete-btn")){
+        const index = event.target.parentElement.dataset.index
+        doingList.removeChild(tasks[index])
+        delete tasks[index]
     }
   });
   
@@ -181,21 +256,39 @@ toDoList.addEventListener('click', (event) => {
     if (event.target.classList.contains('return')) {
 
         const index = event.target.dataset.index
-
-        tasks[index].querySelector(".move-left").remove()
-    
         const button = tasks[index].querySelector(".return")
 
         button.classList.add("move-right")
         button.classList.remove("return")
-        button.querySelector("i").remove()
+        tasks[index].querySelector("h4").style.textDecoration = "none"
+        tasks[index].querySelector(".move-left").remove()
+    
+
+        //button.querySelector("i").remove()
         button.textContent = ">"
       
       
+        tasks[index].dataset.stats = "to-do";
         toDoList.appendChild(tasks[index]);
       
-        tasks[index].dataset.stats = "to-do";
       
+    } else if(event.target.parentElement.classList.contains('return')){
+
+        const index = event.target.parentElement.dataset.index
+        const button = tasks[index].querySelector(".return")
+
+        button.classList.add("move-right")
+        button.classList.remove("return")
+        tasks[index].querySelector("h4").style.textDecoration = "none"
+        tasks[index].querySelector(".move-left").remove()
+    
+
+        //button.querySelector("i").remove()
+        button.textContent = ">"
+      
+      
+        tasks[index].dataset.stats = "to-do";
+        toDoList.appendChild(tasks[index]);
     }
 
     if (event.target.classList.contains('move-left')) {
@@ -210,9 +303,9 @@ toDoList.addEventListener('click', (event) => {
         button.textContent = ">"
         
       
+        tasks[index].dataset.stats = "doing";
         doingList.appendChild(tasks[index]);
       
-        tasks[index].dataset.stats = "doing";
       
     }
 
@@ -232,33 +325,126 @@ toDoList.addEventListener('click', (event) => {
         } else if(expandDescription.dataset.status === "active"){
 
             expandDescription.dataset.status = "inactive"
-            expandDescription.style.color = "#141414"
+            expandDescription.style.color = "var(--text-color)"
             expandDescription.innerHTML = `Ler descrição <i class="material-icons" id="expand-more">expand_more</i>`
     
             tasks[index].querySelector(".description-body").style.display = "none"
         }
     }
+
+    if(event.target.classList.contains('more-vert')){
+        console.log("bom dia")
+        const index = event.target.dataset.index
+        if(event.target.dataset.status === "inactive"){
+            const deleteBtn = tasks[index].querySelector(".delete-btn")
+            event.target.style.color = "#226ED8"
+            deleteBtn.style.display = "flex"
+            event.target.dataset.status = "active"
+        } else if (event.target.dataset.status === "active"){
+            const deleteBtn = tasks[index].querySelector(".delete-btn")
+            deleteBtn.style.display = "none"
+            event.target.style.color = "black"
+            event.target.dataset.status = "inactive"
+        }
+    }
+
+    if(event.target.classList.contains("delete-btn")){
+        const index = event.target.dataset.index
+        doneList.removeChild(tasks[index])
+        delete tasks[index]
+    } else if(event.target.parentElement.classList.contains("delete-btn")){
+        const index = event.target.parentElement.dataset.index
+        doneList.removeChild(tasks[index])
+        delete tasks[index]
+    }
   });
 
 
-//     if (event.target.classList.contains('move-left')){
 
-//     const index = event.target.dataset.index
+  //mobile caroussel
 
-//     const expandDescription = tasks[index].querySelector(".description-show")
+const swipeRight = document.querySelector(".swipe-right")
+const swipeLeft = document.querySelector(".swipe-left")
+let activeIndex = 0
 
-//     if(expandDescription.dataset.status === "inactive"){
-//         expandDescription.dataset.status = "active"
+swipeRight.onclick = function(){
 
-//         expandDescription.innerHTML = `Esconder descrição <i class="material-icons" id="expand-less">expand_less</i>`
+    console.log("oiiiii")
+    const section = document.getElementsByClassName("section")
+    const page = document.getElementsByClassName("page")
+    console.log(section)
+    console.log(page)
+    
+    if(activeIndex < 2){
+        if(activeIndex === 0){
+            Array.from(section).forEach(element => {
+                element.style.translate = "-100%"
+            })
+            Array.from(section)[0].dataset.status = "inactive"
+            Array.from(section)[1].dataset.status = "active"
 
-//         document.querySelector(".description-body").style.display = "block"
+            Array.from(page)[0].dataset.status = "inactive"
+            Array.from(page)[1].dataset.status = "active"
+            activeIndex++
+        } else if (activeIndex === 1){
+            Array.from(section).forEach(element => {
+                element.style.translate = "-200%"
+            })
+            Array.from(section)[1].dataset.status = "inactive"
+            Array.from(section)[2].dataset.status = "active"
+            Array.from(page)[1].dataset.status = "inactive"
+            Array.from(page)[2].dataset.status = "active"
+            activeIndex++
+        }
+    }
+}
 
-//     } else if(expandDescription.dataset.status === "active"){
-//         expandDescription.dataset.status = "inactive"
+swipeLeft.onclick = function(){
+    
+    const section = document.getElementsByClassName("section")
+    const page = document.getElementsByClassName("page")
+   
+    if(activeIndex > 0){
+        if(activeIndex === 1){
+            Array.from(section).forEach(element => {
+                element.style.translate = "0%"
+            })
+            Array.from(section)[1].dataset.status = "inactive"
+            Array.from(section)[0].dataset.status = "active"
 
-//         expandDescription.innerHTML = `Ler descrição <i class="material-icons" id="expand-more">expand_more</i>`
+            Array.from(page)[1].dataset.status = "inactive"
+            Array.from(page)[0].dataset.status = "active"
+            activeIndex--
+        } else if (activeIndex === 2){
+            Array.from(section).forEach(element => {
+                element.style.translate = "-100%"
+            })
+            Array.from(section)[2].dataset.status = "inactive"
+            Array.from(section)[1].dataset.status = "active"
 
-//         document.querySelector(".description-body").style.display = "none"
-//     }
-// }
+            Array.from(page)[2].dataset.status = "inactive"
+            Array.from(page)[1].dataset.status = "active"
+            activeIndex--
+        }
+    }
+}
+
+const modeSwitch = document.querySelector(".mode-switch")
+
+
+modeSwitch.onclick = function(){
+    document.body.classList.toggle("dark-mode");
+    document.querySelector(".logo-header").src = "./imagens/[Imagem] Logo azul.png"
+    document.querySelector(".lightmode-background").dataset.mode = "dark"
+    modeSwitch.querySelector("i").innerText = "dark_mode"
+    modeSwitch.querySelector("i").classList.remove("light-mode")
+    modeSwitch.querySelector("i").classList.add("dark-mode-icon")
+
+    if(document.body.classList.contains("dark-mode") === false){
+        document.querySelector(".logo-header").src = "./imagens/[Imagem] Logo branca.svg"
+        document.querySelector(".lightmode-background").dataset.mode = "light"
+        modeSwitch.querySelector("i").innerText = "light_mode"
+        modeSwitch.querySelector("i").classList.remove("dark-mode-icon")
+        modeSwitch.querySelector("i").classList.add("light-mode")
+    }
+}

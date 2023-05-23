@@ -1,7 +1,7 @@
 footer{
     min-width: 100%;
     min-height: 5rem;
-    background-color: #114FA7;
+    background-color: var(--footer-background);
     display: flex;
     justify-content: space-around;
     align-items: center;

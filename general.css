@@ -10,12 +10,54 @@ html{
 }
 
 body{
+    
+    --background-color: #FAFAFA;
+    --text-color: #000000;
+    --unect-blue: #226ED8;
+    --boxes: #FFFFFF;
+    --section-background: #EEEEEE;
+    --yellow-icons: #FBB910;
+    --frase-do-dia-background: #FFD569;
+    --frase-do-dia: #FFFFFF;
+    --header-background: #226ED8;
+    --footer-background: #114FA7;
+    --red-delete: #DF0000;
+    --title: #FAFAFA;
+    --text-color: #141414;
+    --add-task-background: #FFFFFF;
+    --switch-mode: #FBB910;
+    --switch-icons: #FBB910;
+    --first-circle: #FFFCEE;
+    --second-circle: #FFF5C0;
+    
     height: 100vh;
     /* display: flex;
     flex-direction: column; */
     min-height: 100%;
-    background-color: #FAFAFA;
+    background-color: var(--background-color);
     position: relative;
+    color: var(--text-color);
+}
+
+body.dark-mode{
+
+    --background-color: #222222;
+    --text-color: #FAFAFA;
+    --unect-blue: #226ED8;
+    --boxes: #3D3D3D;
+    --section-background: #333333;
+    --yellow-icons: #FFFFFF;
+    --frase-do-dia-background: #FFD569;
+    --frase-do-dia: #3D3D3D;
+    --header-background: #333333;
+    --footer-background: #111111;
+    --red-delete: #FFAFAF;
+    --title: #3867D6;
+    --add-task-background: #3d3d3d;
+    --switch-icons: #222222;
+    --switch-mode: #222222;
+    --first-circle: #515151;
+    --second-circle: #3d3d3d;
 }
 
 
